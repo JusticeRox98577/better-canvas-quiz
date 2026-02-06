@@ -164,7 +164,9 @@ const page = (authed: boolean) => `<!doctype html>
         }
         if (action === "enrollments") {
           const courseId = document.getElementById("course-id").value.trim();
-          const res = await fetch(`/api/canvas/enrollments?course_id=${encodeURIComponent(courseId)}`);
+          const res = await fetch(
+            "/api/canvas/enrollments?course_id=" + encodeURIComponent(courseId)
+          );
           writeOut("out-enrollments", await res.json());
         }
         if (action === "grade") {

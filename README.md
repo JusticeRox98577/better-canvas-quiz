@@ -38,34 +38,10 @@ If your Canvas is self-hosted, confirm issuer/auth/jwks URLs with your admin.
 - Create a new Vercel project from this folder.
 - After deploy, your base URL will look like: `https://better-canvas-quiz.vercel.app`
 
-## Canvas install (By URL)
+## Canvas LTI 1.3
 
-1) In Canvas course: Settings -> Apps -> +App
-2) Configuration Type: By URL
-3) Config URL:
-
-```
-https://better-canvas-quiz.vercel.app/api/lti/config
-```
-
-4) Submit, then copy the Client ID and Deployment ID into Vercel env vars.
-
-## Canvas install (By Client ID)
-
-1) Use the config URL above to get a Client ID via Dynamic Registration if your Canvas supports it.
-2) Add the Client ID under Settings -> Apps -> +App -> By Client ID.
-
-## Endpoints
-
-- `GET /api/lti/config` (tool config JSON)
-- `GET /api/lti/jwks` (tool public JWK set)
-- `GET /api/lti/oidc` (OIDC initiation)
-- `POST /api/lti/launch` (LTI launch)
-
-## Notes
-
-- This is a minimal launch flow. Deep linking, AGS, and NRPS are placeholders for now.
-- State/nonce are stored in HTTP-only cookies for a basic integrity check.
+LTI endpoints are currently disabled to fit the Vercel Hobby function limit.
+If you upgrade plans or want LTI 1.3 enabled again, re-add the LTI routes.
 
 ## Token-based Canvas API (teacher access token)
 

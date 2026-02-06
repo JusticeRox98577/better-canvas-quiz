@@ -125,13 +125,13 @@ const page = `<!doctype html>
 
       const pushLog = (msg) => {
         const time = new Date().toLocaleTimeString();
-        logEl.textContent += `[${time}] ${msg}\n`;
+        logEl.textContent += "[" + time + "] " + msg + "\n";
         logEl.scrollTop = logEl.scrollHeight;
       };
 
       const setStatus = (on) => {
         active = on;
-        statusEl.textContent = `Integrity monitor: ${on ? "on" : "off"}`;
+        statusEl.textContent = "Integrity monitor: " + (on ? "on" : "off");
       };
 
       const handler = (msg) => {
