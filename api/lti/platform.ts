@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { handlePlatformConfig } from "../_lib/handlers";
+import { handlePlatformConfig } from "../_lib/handlers.js";
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   await handlePlatformConfig(req, res);

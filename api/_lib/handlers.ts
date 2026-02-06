@@ -9,7 +9,7 @@ import {
   sendJson,
   type NodeRequest,
   type NodeResponse,
-} from "./utils";
+} from "./utils.js";
 
 const LTI_VERSION = "1.3.0";
 
