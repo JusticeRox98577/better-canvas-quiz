@@ -1,5 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { canvasRequest } from "../_lib/canvas.js";
+import { isTeacherAuthed } from "../_lib/auth.js";
 import { readJson, sendJson } from "../_lib/utils.js";
 
 type GradePayload = {
@@ -10,6 +11,10 @@ type GradePayload = {
 };
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
+  if (!(await isTeacherAuthed(req))) {
+    sendJson(res, { error: "Unauthorized" }, 401);
+    return;
+  }
   if (req.method !== "POST") {
     sendJson(res, { error: "Method not allowed" }, 405, { "allow": "POST" });
     return;

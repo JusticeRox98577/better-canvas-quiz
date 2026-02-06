@@ -1,8 +1,13 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { canvasRequest } from "../_lib/canvas.js";
+import { isTeacherAuthed } from "../_lib/auth.js";
 import { sendJson } from "../_lib/utils.js";
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
+  if (!(await isTeacherAuthed(req))) {
+    sendJson(res, { error: "Unauthorized" }, 401);
+    return;
+  }
   const url = new URL(req.url ?? "", "http://localhost");
   const courseId = url.searchParams.get("course_id");
 

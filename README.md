@@ -74,6 +74,8 @@ If you can't use LTI 1.3, you can use a teacher access token for basic roster an
 Env vars:
 - `CANVAS_BASE_URL` (e.g., `https://k12.instructure.com`)
 - `CANVAS_ACCESS_TOKEN` (personal access token)
+- `TEACHER_PASSCODE` (shared passcode for teacher UI)
+- `SESSION_SECRET` (random string for session signing)
 
 Endpoints:
 - `GET /api/canvas/me` (test token)
@@ -81,3 +83,8 @@ Endpoints:
 - `GET /api/canvas/enrollments?course_id=123`
 - `POST /api/canvas/grade` JSON:
   `{ "course_id": "123", "assignment_id": "456", "user_id": "789", "score": 95 }`
+
+UI routes:
+- `/` (landing page with role selection)
+- `/teacher` (teacher console, passcode protected)
+- `/student` (student quiz with integrity log)
