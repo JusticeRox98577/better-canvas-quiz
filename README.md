@@ -66,3 +66,18 @@ https://better-canvas-quiz.vercel.app/api/lti/config
 
 - This is a minimal launch flow. Deep linking, AGS, and NRPS are placeholders for now.
 - State/nonce are stored in HTTP-only cookies for a basic integrity check.
+
+## Token-based Canvas API (teacher access token)
+
+If you can't use LTI 1.3, you can use a teacher access token for basic roster and grade sync.
+
+Env vars:
+- `CANVAS_BASE_URL` (e.g., `https://k12.instructure.com`)
+- `CANVAS_ACCESS_TOKEN` (personal access token)
+
+Endpoints:
+- `GET /api/canvas/me` (test token)
+- `GET /api/canvas/courses`
+- `GET /api/canvas/enrollments?course_id=123`
+- `POST /api/canvas/grade` JSON:
+  `{ "course_id": "123", "assignment_id": "456", "user_id": "789", "score": 95 }`

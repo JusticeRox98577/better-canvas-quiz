@@ -73,3 +73,13 @@ export async function readForm(req: NodeRequest): Promise<Record<string, string>
   }
   return data;
 }
+
+export async function readJson<T = unknown>(req: NodeRequest): Promise<T | null> {
+  const contentType = (req.headers["content-type"] ?? "") as string;
+  if (!contentType.includes("application/json")) {
+    return null;
+  }
+  const body = await readBody(req);
+  if (!body.length) return null;
+  return JSON.parse(body.toString("utf8")) as T;
+}
