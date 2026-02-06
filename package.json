@@ -1,0 +1,16 @@
+{
+  "name": "better-canvas-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cookie": "^0.6.0",
+    "jose": "^5.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
